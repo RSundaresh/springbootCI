@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.samples.jwtauth.dto.MultipleCount;
+import com.samples.jwtauth.dto.UserAndTaskInfo;
 import com.samples.jwtauth.jparepository.TaskRepository;
 import com.samples.jwtauth.model.Task;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tasks")
@@ -49,5 +52,20 @@ public class TaskController {
 	@DeleteMapping("/{id}")
 	public void deleteTask(@PathVariable long id) {
 		taskRepository.deleteById(id);
+	}
+	
+	@GetMapping("/count")
+	public Integer getTaskCount() {
+		return taskRepository.getCountOfTasks();
+	}
+	
+	@GetMapping("/counts")
+	public List<Object> getTaskCounts() {
+		return taskRepository.getMultipleCountOfTasks();
+	}
+	
+	@GetMapping("/usertaskinfo/{userName}")
+	public List<UserAndTaskInfo> getUserTaskInfo(@PathVariable("userName") String userName) {
+		return taskRepository.getUserTaskInfo(userName);
 	}
 }
