@@ -7,9 +7,11 @@ git clone git://github.roving.com/ES/springboot-jwt-auth.git
 ```
 
 
+
 ## Viewing the REST Web Service API Endpoint
 
 *Once the application is running then you can view the REST Web Service API endpoints in Swagger UI from the browser by accessing : http://localhost:5000/swagger-ui.html .*
+
 
 
 ## Testing this application
